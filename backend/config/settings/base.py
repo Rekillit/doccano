@@ -25,7 +25,8 @@ env.read_env(path.join(BASE_DIR, ".env"), recurse=False)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY", "v8sk33sy82!uw3ty=!jjv5vp7=s2phrzw(m(hrn^f7e_#1h2al")
+SECRET_KEY = env(
+    "SECRET_KEY", "v8sk33sy82!uw3ty=!jjv5vp7=s2phrzw(m(hrn^f7e_#1h2al")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", True)
@@ -121,12 +122,14 @@ HEADER_AUTH_ADMIN_GROUP_NAME = env("HEADER_AUTH_ADMIN_GROUP_NAME", "")
 HEADER_AUTH_GROUPS_SEPERATOR = env("HEADER_AUTH_GROUPS_SEPERATOR", default=",")
 if HEADER_AUTH_USER_NAME and HEADER_AUTH_USER_GROUPS and HEADER_AUTH_ADMIN_GROUP_NAME:
     MIDDLEWARE.append("api.middleware.HeaderAuthMiddleware")
-    AUTHENTICATION_BACKENDS.append("django.contrib.auth.backends.RemoteUserBackend")
+    AUTHENTICATION_BACKENDS.append(
+        "django.contrib.auth.backends.RemoteUserBackend")
 
 # Role settings
 ROLE_PROJECT_ADMIN = env("ROLE_PROJECT_ADMIN", "project_admin")
 ROLE_ANNOTATOR = env("ROLE_ANNOTATOR", "annotator")
-ROLE_ANNOTATION_APPROVER = env("ROLE_ANNOTATION_APPROVER", "annotation_approver")
+ROLE_ANNOTATION_APPROVER = env(
+    "ROLE_ANNOTATION_APPROVER", "annotation_approver")
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -208,11 +211,13 @@ if DATABASES["default"].get("ENGINE") == "django.db.backends.sqlite3":
 if DATABASES["default"].get("ENGINE") == "django.db.backends.mysql":
     DATABASES["default"].get("OPTIONS", {}).pop("sslmode", None)
     if env("MYSQL_SSL_CA", None):
-        DATABASES["default"].setdefault("OPTIONS", {}).setdefault("ssl", {}).setdefault("ca", env("MYSQL_SSL_CA", None))
+        DATABASES["default"].setdefault("OPTIONS", {}).setdefault(
+            "ssl", {}).setdefault("ca", env("MYSQL_SSL_CA", None))
 
 # default to a sensible modern driver for Azure SQL
 if DATABASES["default"].get("ENGINE") == "sql_server.pyodbc":
-    DATABASES["default"].setdefault("OPTIONS", {}).setdefault("driver", "ODBC Driver 17 for SQL Server")
+    DATABASES["default"].setdefault("OPTIONS", {}).setdefault(
+        "driver", "ODBC Driver 17 for SQL Server")
 
 
 # Sessions and CSRF
@@ -226,7 +231,8 @@ CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", [])
 ALLOWED_HOSTS = ["*"]
 
 if DEBUG:
-    CORS_ORIGIN_WHITELIST = ("http://127.0.0.1:3000", "http://0.0.0.0:3000", "http://localhost:3000")
+    CORS_ORIGIN_WHITELIST = (
+        "http://127.0.0.1:3000", "http://0.0.0.0:3000", "http://localhost:3000", "*")
     CSRF_TRUSTED_ORIGINS = CORS_ORIGIN_WHITELIST
 
 # Batch size for importing data
@@ -252,7 +258,8 @@ DJANGO_DRF_FILEPOND_UPLOAD_TMP = path.join(BASE_DIR, "filepond-temp-uploads")
 DJANGO_DRF_FILEPOND_FILE_STORE_PATH = MEDIA_ROOT
 
 # File upload setting
-MAX_UPLOAD_SIZE = env.int("MAX_UPLOAD_SIZE", pow(1024, 3))  # default: 1GB per a file
+MAX_UPLOAD_SIZE = env.int("MAX_UPLOAD_SIZE", pow(
+    1024, 3))  # default: 1GB per a file
 ENABLE_FILE_TYPE_CHECK = env.bool("ENABLE_FILE_TYPE_CHECK", False)
 
 # Celery settings
@@ -269,7 +276,8 @@ except EnvError:
             uri = uri.replace("postgres://", "postgresql://", 1)
         CELERY_BROKER_URL = "sqla+{}".format(uri)
     except EnvError:
-        CELERY_BROKER_URL = "sqla+sqlite:///{}".format(DATABASES["default"]["NAME"])
+        CELERY_BROKER_URL = "sqla+sqlite:///{}".format(
+            DATABASES["default"]["NAME"])
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"

@@ -121,7 +121,7 @@ export default {
       success: colors.green.accent3,
       themes: {
         dark: {
-          primary: '#21CFF3',
+          primary: '#339933',
           accent: '#FF4081',
           secondary: '#ffe18d',
           success: '#4CAF50',
@@ -130,7 +130,7 @@ export default {
           error: '#FF5252'
         },
         light: {
-          primary: '#1976D2',
+          primary: '#339933',
           accent: '#e91e63',
           secondary: '#30b1dc',
           success: '#4CAF50',

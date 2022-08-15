@@ -1,21 +1,21 @@
 <template>
   <v-main>
     <the-top-banner />
-    <feature-cards />
-    <the-bottom-banner />
+    <!-- <feature-cards /> -->
+    <!-- <the-bottom-banner /> -->
   </v-main>
 </template>
 
 <script>
-import FeatureCards from '@/components/layout/FeatureCards'
+// import FeatureCards from '@/components/layout/FeatureCards'
 import TheTopBanner from '@/components/layout/TheTopBanner'
-import TheBottomBanner from '@/components/layout/TheBottomBanner'
+// import TheBottomBanner from '@/components/layout/TheBottomBanner'
 
 export default {
   components: {
-    FeatureCards,
-    TheTopBanner,
-    TheBottomBanner
+    // FeatureCards,
+    TheTopBanner
+    // TheBottomBanner
   }
 }
 </script>

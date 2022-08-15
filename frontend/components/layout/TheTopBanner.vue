@@ -1,21 +1,13 @@
 <template>
   <section>
-    <v-parallax :src="require(`~/assets/vbanner.jpg`)" height="400" dark>
+    <v-parallax :src="require(`~/assets/vbanner.jpg`)" height="600" dark>
       <v-layout wrap align-center justify-center class="white--text">
-        <v-flex text-right class="mr-5">
-          <img src="~/assets/icon.png" alt="doccano" height="200" />
-        </v-flex>
-        <v-flex>
+        <v-flex class="text-center">
+          <img src="~/assets/icon.png" alt="doccano" height="100" />
           <h1 class="mb-2 display-1 text-xs-center">
             {{ $t('home.mainTitle') }}
           </h1>
           <div class="mt-4">
-            <v-btn large outlined color="white" href="https://github.com/doccano/doccano">
-              <v-icon left>
-                {{ mdiGithub }}
-              </v-icon>
-              GitHub
-            </v-btn>
             <v-btn class="blue lighten-2 ml-5" dark large :href="localePath('/auth')">
               {{ $t('home.getStarted') }}
             </v-btn>

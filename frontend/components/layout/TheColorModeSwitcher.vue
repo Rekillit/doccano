@@ -31,7 +31,7 @@ export default Vue.extend({
 
   created() {
     const dark = localStorage.getItem('dark')
-    this.isDark = dark ? JSON.parse(dark) : false
+    this.isDark = dark ? JSON.parse(dark) : true
   }
 })
 </script>
