@@ -192,7 +192,7 @@ export default Vue.extend({
       projectTypeRules,
       descriptionRules,
       mdiCheckBold,
-      selected: 0
+      selected: 3
     }
   },
 

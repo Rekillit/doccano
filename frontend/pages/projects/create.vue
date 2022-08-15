@@ -20,20 +20,23 @@ export default Vue.extend({
     return {
       editedItem: {
         name: '',
-        description: '',
-        projectType: 'DocumentClassification',
+        description: `${new Date().toLocaleString()}`,
+        projectType: 'IntentDetectionAndSlotFilling',
         enableRandomOrder: false,
         enableShareAnnotation: false,
         singleClassClassification: false,
         allowOverlapping: false,
         graphemeMode: false,
         useRelation: false,
-        tags: [] as string[]
+        tags: [
+          `${new Date().toLocaleString('default', { month: 'long' })}`,
+          `${new Date().toLocaleString('default', { year: 'numeric' })}`
+        ] as string[]
       } as ProjectWriteDTO,
       defaultItem: {
         name: '',
         description: '',
-        projectType: 'DocumentClassification',
+        projectType: 'IntentDetectionAndSlotFilling',
         enableRandomOrder: false,
         enableShareAnnotation: false,
         singleClassClassification: false,
